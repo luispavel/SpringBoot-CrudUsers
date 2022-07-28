@@ -4,6 +4,9 @@ import com.crudusuarios.domain.dto.AuthenticationRequest;
 import com.crudusuarios.domain.dto.AuthenticationResponse;
 import com.crudusuarios.domain.service.OwnUserDetailsService;
 import com.crudusuarios.web.security.JWTUtil;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiResponse;
+import io.swagger.annotations.ApiResponses;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -29,7 +32,13 @@ public class AuthController {
 	private JWTUtil jwtUtil;
 
 	@PostMapping("/authenticate")
-	public ResponseEntity<AuthenticationResponse> createToken(@RequestBody AuthenticationRequest request) {
+	@ApiOperation("Get token user, send body username: pavel password: 12345678")
+	@ApiResponses(value = {
+			@ApiResponse(code = 200, message = "OK"),
+			@ApiResponse(code = 401, message = "Unauthorized")
+	})
+	public ResponseEntity<AuthenticationResponse> createToken(
+			@RequestBody AuthenticationRequest request) {
 		try {
 			authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(request.getUsername(), request.getPassword()));
 			UserDetails userDetails = ownUserDetailsService.loadUserByUsername(request.getUsername());

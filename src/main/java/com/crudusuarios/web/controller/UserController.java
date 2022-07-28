@@ -39,23 +39,41 @@ public class UserController {
 				.orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
 	}
 	@GetMapping("/name/{name}")
-	public ResponseEntity<List<User>> getByName(@PathVariable("name") String name) {
+	@ApiOperation("Search user by name")
+	@ApiResponses(value = {
+			@ApiResponse(code = 200, message = "OK"),
+			@ApiResponse(code = 404, message = "Not Found")
+	})
+	public ResponseEntity<List<User>> getByName(@ApiParam(value ="Name of user", required = true, example = "John")
+												@PathVariable("name") String name) {
 		return userService.getByName(name)
 				.map(users -> new ResponseEntity<>(users, HttpStatus.OK))
 				.orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
 	}
 	@GetMapping("/lastname/{lastname}")
+	@ApiOperation("Search user by lastname")
+	@ApiResponses(value = {
+			@ApiResponse(code = 200, message = "OK"),
+			@ApiResponse(code = 404, message = "Not Found")
+	})
 	public ResponseEntity<List<User>> getByLastName(@PathVariable("lastname") String lastName) {
 		return userService.getByLastName(lastName)
 				.map(users -> new ResponseEntity<>(users, HttpStatus.OK))
 				.orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
 	}
 	@PostMapping("/save")
+	@ApiOperation("Save user")
+	@ApiResponse(code = 201, message = "Created")
 	public ResponseEntity<User> save(@RequestBody User user) {
 		return new ResponseEntity<>(userService.save(user),
 				HttpStatus.CREATED);
 	}
 	@DeleteMapping("/delete/{id}")
+	@ApiOperation("Delete user")
+	@ApiResponses(value = {
+			@ApiResponse(code = 200, message = "OK"),
+			@ApiResponse(code = 404, message = "Not Found")
+	})
 	public ResponseEntity delete(@PathVariable("id") long userId) {
 		if (userService.delete(userId)) {
 			return new ResponseEntity(HttpStatus.OK);
@@ -64,6 +82,11 @@ public class UserController {
 		}
 	}
 	@PutMapping("/update")
+	@ApiOperation("Update user")
+	@ApiResponses(value = {
+			@ApiResponse(code = 200, message = "OK"),
+			@ApiResponse(code = 404, message = "Not Found")
+	})
 	public ResponseEntity<User> update(@RequestBody User user) {
 		return new ResponseEntity<>(userService.update(user), HttpStatus.OK);
 	}

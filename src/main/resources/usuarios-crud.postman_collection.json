@@ -1,0 +1,272 @@
+{
+	"info": {
+		"_postman_id": "1a1be0eb-e765-43e1-94f1-bf5ff607af21",
+		"name": "usuarios-crud",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "13499966"
+	},
+	"item": [
+		{
+			"name": "GetUsers",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJwYXZlbCIsImlhdCI6MTY1ODkzOTIzMiwiZXhwIjoxNjU4OTY4MDMyfQ.039vV83QxAtN_3htJg7djV_jIldVoC_sszERPorQAXc",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8081/app-users/api/users/all",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"app-users",
+						"api",
+						"users",
+						"all"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetUserByName",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJwYXZlbCIsImlhdCI6MTY1ODkzOTIzMiwiZXhwIjoxNjU4OTY4MDMyfQ.039vV83QxAtN_3htJg7djV_jIldVoC_sszERPorQAXc",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8081/app-users/api/users/name/Sari",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"app-users",
+						"api",
+						"users",
+						"name",
+						"Sari"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetUserByLastName",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJwYXZlbCIsImlhdCI6MTY1ODkzOTIzMiwiZXhwIjoxNjU4OTY4MDMyfQ.039vV83QxAtN_3htJg7djV_jIldVoC_sszERPorQAXc",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8081/app-users/api/users/lastname/Kane",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"app-users",
+						"api",
+						"users",
+						"lastname",
+						"Kane"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetUserById",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJwYXZlbCIsImlhdCI6MTY1ODkzOTIzMiwiZXhwIjoxNjU4OTY4MDMyfQ.039vV83QxAtN_3htJg7djV_jIldVoC_sszERPorQAXc",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8081/app-users/api/users/103",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"app-users",
+						"api",
+						"users",
+						"103"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "1",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "SaveUser",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJwYXZlbCIsImlhdCI6MTY1ODkzOTIzMiwiZXhwIjoxNjU4OTY4MDMyfQ.039vV83QxAtN_3htJg7djV_jIldVoC_sszERPorQAXc",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n        \"name\": \"joselo1\",\r\n        \"lastName\": \"perez1\",\r\n        \"cellphone\": 5511002299,\r\n        \"address\": \"30 calle oriente\",\r\n        \"email\": \"jperez@gnu.org\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8081/app-users/api/users/save",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"app-users",
+						"api",
+						"users",
+						"save"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Authenticate",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n        \"name\": \"pavel\",\r\n        \"password\": \"12345678\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8081/app-users/api/auth/authenticate",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"app-users",
+						"api",
+						"auth",
+						"authenticate"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DeleteUser",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJwYXZlbCIsImlhdCI6MTY1ODkzOTIzMiwiZXhwIjoxNjU4OTY4MDMyfQ.039vV83QxAtN_3htJg7djV_jIldVoC_sszERPorQAXc",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8081/app-users/api/users/delete/104",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"app-users",
+						"api",
+						"users",
+						"delete",
+						"104"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "0",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "UpdateUser",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJwYXZlbCIsImlhdCI6MTY1ODkzOTIzMiwiZXhwIjoxNjU4OTY4MDMyfQ.039vV83QxAtN_3htJg7djV_jIldVoC_sszERPorQAXc",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"userId\": 103,\r\n    \"name\": \"joseloAct\",\r\n    \"lastName\": \"perezAc\",\r\n    \"cellphone\": 5511002288,\r\n    \"address\": \"30 calle oriente\",\r\n    \"email\": \"jperez@gnu.org\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8081/app-users/api/users/update",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"app-users",
+						"api",
+						"users",
+						"update"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
